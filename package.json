@@ -1,15 +1,14 @@
 {
-    "name": "keima",
-    "demo": "https://keima.fueko.net",
-    "version": "4.2.0",
-    "docs": "https://fueko.net/docs/keima/",
+    "name": "Art Site",
+    "version": "1.0.0",
     "author": {
-        "name": "fueko",
-        "email": "hello@fueko.net",
-        "url": "https://fueko.net"
+        "name": "Rae Farine",
+        "email": "rfarine@proton.me",
+        "url": "https://raefarine.art"
     },
     "keywords": [
-        "ghost-theme"
+        "ghost-theme",
+        "art portfolio"
     ],
     "config": {
         "posts_per_page": 8,
