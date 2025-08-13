@@ -1,0 +1,9 @@
+{{#if @site.members_enabled}}
+{{#if @member}}
+<li><a class="members-account" href="{{@site.url}}/account/">{{t "Account"}}<span class="blog-nav-dot blog-detail-dot"></span></a></li>
+<li><a class="members-signout blog-detail-bg" href="#" data-members-signout>{{t "Sign out"}}</a></li>
+{{else}}
+<li><a class="members-signin" href="{{@site.url}}/signin/">{{t "Sign in"}}<span class="blog-nav-dot blog-detail-dot"></span></a></li>
+<li><a class="members-signup blog-detail-bg" href="{{@site.url}}/membership/">{{t "Membership"}}</a></li>
+{{/if}}
+{{/if}}

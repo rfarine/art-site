@@ -1,0 +1,31 @@
+<footer class="section-footer">
+	{{>members/subscribe_cta}}
+	<div class="footer-nav">
+		<nav>
+			<ul>
+				{{#if @site.secondary_navigation}}
+				{{navigation type="secondary"}}
+				{{else}}
+				{{navigation}}
+				{{/if}}
+			</ul>
+		</nav>
+	</div>
+	<div class="footer-social blog-detail-svg">
+		{{#if @site.facebook}}
+		<a href="{{facebook_url}}">{{>icons/social/facebook}}</a>
+		{{/if}}
+		{{#if @site.twitter}}
+		<a href="{{twitter_url}}">{{>icons/social/twitter}}</a>
+		{{/if}}
+		{{>footer_icons}}
+	</div>
+	<div class="footer-copyright">
+		<span>&copy; {{date format="YYYY"}} <a href="{{@site.url}}">{{@site.title}}</a>.</span>
+		{{#if @custom.footer_copyright}}
+		{{{@custom.footer_copyright}}}
+		{{else}}
+		{{{t "All Right Reserved. Published with {ghost-link} & {theme-name}." ghost-link="<a href=\"https://ghost.org\" target=\"_blank\" rel=\"noopener noreferrer\">Ghost</a>" theme-name="<a href=\"https://fueko.net\" target=\"_blank\" rel=\"noopener\">Keima</a>"}}}
+		{{/if}}
+	</div>
+</footer>

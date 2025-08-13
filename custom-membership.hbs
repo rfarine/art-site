@@ -1,0 +1,26 @@
+{{!< default}}
+{{#post}}
+{{#contentFor "is_membership"}} is-membership{{/contentFor}}
+{{^if @site.cover_image}}
+{{#contentFor "is_cover_image"}}
+{{#if feature_image}} is-cover{{/if}}
+{{/contentFor}}
+{{/if}}
+{{#contentFor "cover_image"}}
+{{#if feature_image}}
+<div class="blog-cover membership-cover" style="background-image: url({{feature_image}})"></div>
+{{/if}}
+{{/contentFor}}
+<div class="section-membership section-author-tag">
+    <div class="membership-content">
+        <h1>{{title}}</h1>
+        <p>{{t "Unlock full access to {blog-title} and see the entire library of subscribers-only content & updates" blog-title=@site.title}}</p>
+    </div>
+</div>
+{{>members/tiers free_tier=true}}
+<div class="membership-footer">
+    {{^if @member}}
+    <small class="blog-question">{{t "Already have an account?"}} <a href="{{@site.url}}/signin/">{{t "Sign in"}}</a></small>
+    {{/if}}
+</div>
+{{/post}}

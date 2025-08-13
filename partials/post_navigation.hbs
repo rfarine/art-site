@@ -1,0 +1,20 @@
+<aside class="section-prevnext" id="prevnext">
+    <div class="prevnext-wrap blog-flex{{^next_post}} is-one{{/next_post}}{{^prev_post}} is-one{{/prev_post}}">
+        {{#next_post}}
+        <a href="{{url}}" class="prev-post blog-flex">
+            <section>
+                <h5>{{t "Newer Post"}}</h5>
+                <h3>{{title}}</h3>
+            </section>
+        </a>
+        {{/next_post}}
+        {{#prev_post}}
+        <a href="{{url}}" class="next-post blog-flex">
+            <section>
+                <h5>{{t "Older Post"}}</h5>
+                <h3>{{title}}</h3>
+            </section>
+        </a>
+        {{/prev_post}}
+    </div>
+</aside>

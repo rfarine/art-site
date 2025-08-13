@@ -1,0 +1,26 @@
+{{!< default}}
+{{#tag}}
+{{#contentFor "is_cover_image"}}
+{{#if feature_image}} is-cover{{else if @site.cover_image}} is-cover{{/if}}
+{{/contentFor}}
+{{#contentFor "cover_image"}}
+{{#if feature_image}}
+<div class="blog-cover" style="background-image: url({{feature_image}})"></div>
+{{else if @site.cover_image}}
+<div class="blog-cover" style="background-image: url({{@site.cover_image}})"></div>
+{{/if}}
+{{/contentFor}}
+<div class="section-author-tag blog-flex">
+	<div class="tag-content">
+		<h1 class="blog-flex">{{name}} <span class="counter blog-flex">{{>icons/blog/ribbon}}{{plural ../pagination.total empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}</span></h1>
+		{{#if description}}
+		<p>{{description}}</p>
+		{{/if}}
+	</div>
+	<div class="blog-divider blog-detail-svg">
+		{{>icons/blog/zigzag}}
+	</div>
+</div>
+{{/tag}}
+{{>loop}}
+{{pagination}}

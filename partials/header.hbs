@@ -1,0 +1,31 @@
+{{#if @site.description}}
+<div class="blog-description">{{@site.description}}</div>
+{{/if}}
+<div class="header-logo{{^if @site.description}} no-description{{/if}}">
+	{{#if @site.logo}}
+	{{#is "post, page, author, tag"}}
+	<div{{else}}<h1{{/is}} class="is-logo"><a href="{{@site.url}}"><img src="{{@site.logo}}" alt="{{@site.title}}"></a>{{#is "post, page, author, tag"}}</div>{{else}}</h1>{{/is}}{{else}}{{^is "post, page, author, tag"}}<h1>{{/is}}<a class="no-logo" href="{{@site.url}}">{{@site.title}}</a>{{^is "post, page, author, tag"}}</h1>
+	{{/is}}
+	{{/if}}
+</div>
+<div class="header-nav">
+	<label for="toggle" class="nav-label blog-detail-dot"></label>
+	<input type="checkbox" id="toggle">
+	<div class="nav-mobile">
+		<nav>
+			<ul>
+				{{navigation}}
+				{{>members/login_panel}}
+				{{>search_icon}}
+			</ul>
+		</nav>
+	</div>
+</div>
+{{#contentFor "nav_script"}}
+<script>
+const navLabel = document.querySelector(".nav-label");
+      navLabel && navLabel.addEventListener("click", function() {
+      navLabel.classList.toggle("is-active")
+})
+</script>
+{{/contentFor}}

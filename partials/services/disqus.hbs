@@ -1,0 +1,10 @@
+<div class="section-disqus" id="disqusloader">
+<script>
+    var options = {
+        scriptUrl: "https://{{@custom.disqus_shortname}}.disqus.com/embed.js",
+        disqusConfig: function() {
+        this.page.url = '{{url absolute="true"}}';
+        this.page.identifier = 'ghost-{{comment_id}}';
+    }};
+</script>
+</div>

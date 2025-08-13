@@ -1,0 +1,43 @@
+{{!< default}}
+{{#author}}
+{{#contentFor "is_cover_image"}}
+{{#if cover_image}} is-cover{{else @site.cover_image}} is-cover{{/if}}
+{{/contentFor}}
+{{#contentFor "cover_image"}}
+{{#if cover_image}}
+<div class="blog-cover" style="background-image: url({{cover_image}})"></div>
+{{else if @site.cover_image}}
+<div class="blog-cover" style="background-image: url({{@site.cover_image}})"></div>
+{{/if}}
+{{/contentFor}}
+<div class="section-author-tag blog-flex{{#if profile_image}} is-image{{/if}}">
+	{{#if profile_image}}
+	<div class="author-profile-image blog-image" style="background-image: url({{profile_image}})"></div>
+	{{/if}}
+	<div class="author-content">
+		<h1>{{name}}</h1>
+		<div class="author-social blog-detail-svg">
+			{{#if location}}
+			<div class="location">{{>icons/blog/location}}<span>{{location}}</span></div>
+			{{/if}}
+			{{#if website}}
+			<a href="{{website}}">{{>icons/blog/link}}</a>
+			{{/if}}
+			{{#if facebook}}
+			<a href="{{facebook_url}}">{{>icons/social/facebook}}</a>
+			{{/if}}
+			{{#if twitter}}
+			<a href="{{twitter_url}}">{{>icons/social/twitter}}</a>
+			{{/if}}
+		</div>
+		{{#if bio}}
+		<p>{{bio}}</p>
+		{{/if}}
+	</div>
+	<div class="blog-divider blog-detail-svg">
+		{{>icons/blog/zigzag}}
+	</div>
+</div>
+{{/author}}
+{{>loop}}
+{{pagination}}

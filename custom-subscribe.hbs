@@ -1,0 +1,54 @@
+{{!< default-custom}}
+{{#contentFor "custom_meta_title"}}{{meta_title}}{{/contentFor}}
+<body class="page-subscribe-custom {{body_class}}">
+    <div class="section-blog-wrap{{#get "tags" limit="all"}}{{#foreach tags visibility="internal"}} {{slug}}{{/foreach}}{{/get}}">
+        {{#post}}
+        <div class="section-blog-content{{#if feature_image}} is-cover{{else}}{{#if @site.cover_image}} is-cover{{/if}}{{/if}}">
+            {{#if feature_image}}
+            <div class="blog-cover" style="background-image: url({{feature_image}})"></div>
+            {{else if @site.cover_image}}
+            <div class="blog-cover" style="background-image: url({{@site.cover_image}})"></div>
+            {{/if}}
+            <div class="section-page-subscribe blog-flex">
+                <div class="page-subscribe-wrap">
+                    <div class="page-subscribe-header">
+                        <a href="{{@site.url}}">{{>icons/blog/arrow_left}}{{t "Back to Homepage"}}</a>
+                    </div>
+                    <div class="page-subscribe-content blog-flex">
+                        <div class="subscribe-wrap">
+                            <form data-members-form="subscribe" data-members-autoredirect="false" class="subscribe-form">
+                                <h3 class="subscribe-title">{{title}}</h3>
+                                <div class="form-group">
+                                    <input data-members-name class="subscribe-email" type="text" placeholder="{{t "Your name"}}" aria-label="{{t "Your name"}}" required>
+                                    <span class="subscribe-input-line"></span>
+                                    <input data-members-email class="subscribe-email" type="email" placeholder="{{t "Your email address"}}" aria-label="{{t "Your email address"}}" required>
+                                    <span class="subscribe-input-line"></span>
+                                </div>
+                                <div class="blog-button-bg">
+                                    <button class="blog-button blog-detail-bg" type="submit">{{t "Subscribe"}}</button>
+                                </div>
+                            </form>
+                            <p class="subscribe-alert-loading">{{t "Processing your application"}}</p>
+                            <p class="subscribe-alert-error">{{t "There was an error sending the email"}}</p>
+                            <div class="subscribe-success">
+                                <h3>{{t "Great!"}}</h3>
+                                <p>{{t "Check your inbox and click the link to confirm your subscription"}}</p>
+                                <div class="blog-button-bg">
+                                    <a href="{{@site.url}}" class="blog-button blog-detail-bg">{{t "Back to Homepage"}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{#if @site.description}}
+                    <div class="page-subscribe-footer">
+                        <a href="{{@site.url}}">{{@site.title}}.</a>
+                        <span>{{@site.description}}.</span>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        {{/post}}
+    </div>
+    {{ghost_foot}}
+</body>

@@ -1,0 +1,124 @@
+<div class="section-slider">
+	<div id="slide-wrap" class="slide-wrap">
+		{{#get "pages" filter="featured:true" order="published_at desc" as |slider-pages|}}
+		{{#foreach slider-pages}}
+		<div class="slide-item-wrap slide-page-{{@number}}">
+			{{#if feature_image}}
+			<div class="slide-image blog-image" style="background-image: url({{feature_image}})"></div>
+			{{/if}}
+			<div class="slide-content blog-flex">
+				<div class="slide-content-wrap{{^if feature_image}} no-image{{/if}}">
+					<div class="blog-tags-wrap">
+						<span class="blog-tag-featured blog-tag">{{t "Featured-post"}}</span>
+						{{#if tags}}
+						{{#foreach tags}}
+						<a class="blog-tags blog-tag blog-detail-bg" href="{{url}}">{{name}}</a>
+						{{/foreach}}
+						{{/if}}
+					</div>
+					<h2 class="blog-detail-hover"><a href="{{url}}">{{title}}</a></h2>
+					{{#if custom_excerpt}}
+					<div class="slide-excerpt blog-excerpt">
+						{{>icons/blog/zigzag}}
+						{{{custom_excerpt}}}
+					</div>
+					{{/if}}
+				</div>
+			</div>
+		</div>
+		{{/foreach}}
+		{{/get}}
+		{{#get "posts" filter="featured:true" include="authors,tags" as |slider-posts|}}
+		{{#foreach slider-posts}}
+		<div class="slide-item-wrap slide-post-{{@number}}">
+			{{#if feature_image}}
+			<div class="slide-image blog-image" style="background-image: url({{feature_image}})"></div>
+			{{/if}}
+			<div class="slide-content blog-flex">
+				<div class="slide-content-wrap{{^if feature_image}} no-image{{/if}}">
+					<div class="blog-tags-wrap">
+						<span class="blog-tag-featured blog-tag">{{t "Featured-post"}}</span>
+						{{#if tags}}
+						{{#foreach tags}}
+						<a class="blog-tags blog-tag blog-detail-bg" href="{{url}}">{{name}}</a>
+						{{/foreach}}
+						{{/if}}
+					</div>
+					<h2 class="blog-detail-hover"><a href="{{url}}">{{title}}</a></h2>
+					{{#if custom_excerpt}}
+					<div class="slide-excerpt blog-excerpt">
+						{{>icons/blog/zigzag}}
+						{{{custom_excerpt}}}
+					</div>
+					{{/if}}
+					<div class="blog-meta blog-flex">
+						{{#primary_author}}
+						{{#if profile_image}}
+						<a href="{{url}}" class="blog-profile-image" style="background-image: url({{profile_image}})"></a>
+						{{/if}}
+						{{/primary_author}}
+						<div class="meta-author-wrap">
+							{{#if authors}}
+							{{#foreach authors}}
+							{{#if @first}}
+							{{^if profile_image}}
+							{{t "by"}}
+							{{/if}}
+							{{/if}}
+							{{/foreach}}
+							{{/if}}
+							{{#has author="count:1"}}
+							{{authors}}
+							{{else has author="count:2"}}
+							{{authors separator=(t " & ")}}
+							{{else has author="count:3"}}
+							{{authors to="2"}} {{t "and"}} {{authors from="3"}}
+							{{else has author="count:>3"}}
+							{{authors limit="1"}}
+							{{t "and others"}}
+							{{/has}}
+							<time datetime="{{date format="YYYY-MM-DD"}}">— {{date published_at timeago="true"}}</time>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/foreach}}
+		{{/get}}
+	</div>
+	<div class="section-slide-nav blog-flex">
+		<div class="slide-nav-wrap" id="slide-nav-wrap">
+			<span class="slide-nav-label">{{t "Featured-list"}}</span>
+			<div class="slide-nav-content" id="slide-nav-content">
+				{{#get "pages" filter="featured:true" order="published_at desc" as |slider-pages-nav|}}
+				{{#foreach slider-pages-nav}}
+				<div class="slide-nav-item blog-detail-slide-nav{{#if @first}} slide-nav-page-first{{/if}}">
+					<h2><a class="flickity-trigger" data-selector=".slide-page-{{@number}}">{{title}}</a></h2>
+				</div>
+				{{/foreach}}
+				{{/get}}
+				{{#get "posts" filter="featured:true" include="authors,tags" as |slider-posts-nav|}}
+				{{#foreach slider-posts-nav}}
+				<div class="slide-nav-item blog-detail-slide-nav{{#if @first}} slide-nav-post-first{{/if}}"{{#has number="1"}} id="slide-nav-1"{{/has}}{{#has number="5"}} id="slide-nav-5"{{/has}}{{#has number="7"}} id="slide-nav-7"{{/has}}>
+					<h2><a class="flickity-trigger" data-selector=".slide-post-{{@number}}">{{title}}</a></h2>
+					<div class="blog-meta">
+						{{t "by"}}
+						{{#has author="count:1"}}
+						{{authors}}
+						{{else has author="count:2"}}
+						{{authors separator=(t " & ")}}
+						{{else has author="count:>2"}}
+						{{authors limit="1"}}
+						{{t "and others"}}
+						{{/has}}
+					</div>
+				</div>
+				{{/foreach}}
+				{{/get}}
+			</div>
+		</div>
+	</div>
+	<div class="blog-divider blog-detail-svg">
+		{{>icons/blog/zigzag}}
+	</div>
+</div>

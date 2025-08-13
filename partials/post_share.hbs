@@ -1,0 +1,8 @@
+<div class="post-share">
+	<span class="label">{{t "Share"}}</span><span class="hyphen"> — </span>
+	<a href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}" target="_blank" rel="noopener">twitter</a><span>/</span>
+	<a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}" target="_blank" rel="noopener">facebook</a><span>/</span>
+	<a href="javascript:" class="copy-link" id="copy" data-clipboard-target="#link-value">{{t "copy link"}}</a>
+	{{>icons/blog/copy}}
+<input type="text" value="{{url absolute="true"}}" id="link-value">
+</div>

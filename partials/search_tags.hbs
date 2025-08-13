@@ -1,0 +1,12 @@
+{{#get "tags" limit="all" filter="visibility:public" include="count.posts" order="count.posts desc"}}
+<div class="search-suggestion-tags blog-tags-wrap">
+	{{#foreach tags to="20" separator=""}}
+	{{#if @first}}
+	<h3>{{t "May we suggest a tag?"}}</h3>
+	<a class="blog-tags blog-tag blog-detail-bg" href="{{url}}">{{name}}</a>
+	{{else}}
+	<a class="blog-tags blog-tag blog-detail-bg" href="{{url}}">{{name}}</a>
+	{{/if}}
+	{{/foreach}}
+</div>
+{{/get}}

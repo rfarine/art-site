@@ -1,0 +1,37 @@
+{{!< default}}
+{{#get "tags" limit="all" filter="visibility:public" include="count.posts" order="count.posts desc"}}
+<div class="section-page-tags">
+    <div class="page-tags-wrap blog-flex">
+        {{#foreach tags to="5"}}
+        {{#if @first}}
+        <div class="page-tags-title">
+            <h4>{{t "Our top tags"}}</h4>
+        </div>
+        {{/if}}
+        <div class="page-tag-wrap tags-top">
+            {{#if feature_image}}
+            <div class="page-tag-image blog-image"" style="background-image: url({{feature_image}})"></div>
+            {{/if}}
+            <h2 class="blog-detail-hover"><a href="{{url}}">{{name}}</a></h2>
+            {{#if description}}
+            <p>{{description}}</p>
+            {{/if}}
+        </div>
+        {{/foreach}}
+        {{#foreach tags from="6"}}
+        {{#if @first}}
+        <div class="page-tags-title tags-other">
+            <h4>{{t "You might also like"}}</h4>
+        </div>
+        {{/if}}
+        <div class="page-tag-wrap tags-other">
+            <a href="{{url}}" class="item-link-overlay"></a>
+            {{#if feature_image}}
+            <div class="page-tag-image blog-image" style="background-image: url({{feature_image}})"></div>
+            {{/if}}
+            <h2 class="blog-detail-hover"><a href="{{url}}">{{name}}</a></h2>
+        </div>
+        {{/foreach}}
+    </div>
+</div>
+{{/get}}

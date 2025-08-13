@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>{{meta_title page=(t "meta-page")}}</title>
+		<meta name="HandheldFriendly" content="True">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{{>services/google_fonts}}
+		<link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}">
+		{{ghost_head}}
+	</head>
+	<body class="{{body_class}}">
+		<div class="blog-overlay">
+			<div class="section-blog-wrap{{#get "tags" limit="all"}}{{#foreach tags visibility="internal"}} {{slug}}{{/foreach}}{{/get}}">
+				<div class="section-blog-content{{^is "author, tag"}}{{#if @site.cover_image}} is-cover{{/if}}{{/is}}{{{block "is_cover_image"}}}{{{block "is_membership"}}}">
+					{{{block "cover_image"}}}
+					{{^is "author, tag"}}
+					{{#if @site.cover_image}}
+					<div class="blog-cover" style="background-image: url({{@site.cover_image}})"></div>
+					{{/if}}
+					{{/is}}
+					{{>header}}
+					{{{body}}}
+				</div>
+				{{>footer}}
+			</div>
+			{{>members/notifications}}
+		</div>
+		<div class="search-overlay"></div>
+		{{#if @custom.content_api_key_for_search}}
+			{{>search}}
+		{{/if}}
+		{{#if pagination.pages}}
+		<script>var numberPage = {{pagination.pages}};</script>
+		<script src="{{asset "js/index.js"}}"></script>
+		{{/if}}
+		{{#is "post, page"}}
+		<script src="{{asset "js/post.js"}}"></script>
+		{{/is}}
+		{{{block "nav_script"}}}
+		{{{block "search_script"}}}
+		{{{block "notifications_script"}}}
+		{{{block "membership_script"}}}
+		{{ghost_foot}}
+	</body>
+</html>
